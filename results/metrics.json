@@ -1,0 +1,10 @@
+{
+  "n_total": 30000,
+  "positive_rate": 0.2296,
+  "roc_auc": 0.6925709941536627,
+  "threshold_for_~80pct_recall": 0.4164254198091755,
+  "precision_at_threshold": 0.30484094052558786,
+  "recall_at_threshold": 0.7997097242380261,
+  "f1_at_threshold": 0.44141798517925096,
+  "confusion_matrix": [[2109, 2513], [276, 1102]]
+}
