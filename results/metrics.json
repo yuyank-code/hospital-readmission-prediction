@@ -1,10 +1,34 @@
 {
-  "n_total": 30000,
-  "positive_rate": 0.2296,
-  "roc_auc": 0.6925709941536627,
-  "threshold_for_~80pct_recall": 0.4164254198091755,
-  "precision_at_threshold": 0.30484094052558786,
-  "recall_at_threshold": 0.7997097242380261,
-  "f1_at_threshold": 0.44141798517925096,
-  "confusion_matrix": [[2109, 2513], [276, 1102]]
+    "dataset": {
+        "name": "Diabetes 130-US Hospitals",
+        "rows": 101766,
+        "target": "30-day readmission",
+        "positive_class": "<30 days"
+    },
+    "models": {
+        "without_l2": {
+            "model": "LOGISTIC REGRESSION WITHOUT L2",
+            "roc_auc": 0.6355155284382331,
+            "precision": 0.4774774774774775,
+            "recall": 0.023337736679876705,
+            "f1_score": 0.04450041981528128,
+            "true_negative": 18025,
+            "false_positive": 58,
+            "false_negative": 2218,
+            "true_positive": 53,
+            "false_negative_rate": 0.9766622633201233
+        },
+        "with_l2": {
+            "model": "LOGISTIC REGRESSION WITH L2",
+            "roc_auc": 0.6440350774535336,
+            "precision": 0.4782608695652174,
+            "recall": 0.019374724790841038,
+            "f1_score": 0.03724079559881507,
+            "true_negative": 18035,
+            "false_positive": 48,
+            "false_negative": 2227,
+            "true_positive": 44,
+            "false_negative_rate": 0.980625275209159
+        }
+    }
 }
