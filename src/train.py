@@ -36,6 +36,7 @@ for directory in (DATA_DIR, MODEL_DIR, RESULTS_DIR):
 RANDOM_STATE = 42
 N_SAMPLES = 30_000
 TEST_SIZE = 0.20
+MODEL_FILENAME = "logistic_l2_readmission.joblib"
 
 
 # -----------------------------------------------------------------------------
@@ -202,7 +203,15 @@ def main():
         "confusion_matrix": matrix.tolist(),
     }
 
-    joblib.dump(model, MODEL_DIR / "logistic_l2_readmission.joblib")
+    # Save an uncompressed Joblib artifact so the model is directly usable
+    # without an additional compression layer. Protocol 5 is efficient for
+    # NumPy/scikit-learn objects while keeping the artifact easy to load.
+    joblib.dump(
+        model,
+        MODEL_DIR / MODEL_FILENAME,
+        compress=0,
+        protocol=5,
+    )
 
     with open(RESULTS_DIR / "metrics.json", "w", encoding="utf-8") as file:
         json.dump(metrics, file, indent=2)
@@ -238,6 +247,7 @@ def main():
     print(f"ROC-AUC: {metrics['roc_auc']:.3f}")
     print(f"Recall:   {metrics['recall_at_threshold']:.3f}")
     print(f"Precision:{metrics['precision_at_threshold']:.3f}")
+    print(f"Model:    {MODEL_DIR / MODEL_FILENAME}")
 
 
 if __name__ == "__main__":
